@@ -1,15 +1,6 @@
 import { useState } from "react";
 import "./index.css";
 
-//Rus
-// 1 - Создайте состояние isOpen для управления открытием и закрытием приложения. Интерфейс скрывается при нажатии на крестик и отображается при нажатии на кнопку "Начать".
-// 2 - Реализуйте функционал отображения карточек в зависимости от активного таба. Переключать табы можно как нажатием на кнопки "Prev" и "Next", так и нажатием на сам таб.
-
-//Eng
-// 1 - Create a state variable, isOpen, to control opening and closing the app. The interface is hidden when the close icon is clicked and shown when the Start button is pressed.
-// 2 - Implement functionality to display cards based on the currently active tab. Tabs can be switched either by clicking the Prev and Next buttons or by clicking directly on the tab itself.
-
-// Card data with details for each card
 const cardData = [
   {
     title: "Mocha",
@@ -69,10 +60,14 @@ export default function App() {
     setIsOpen((prev) => !prev);
   }
   function tooglePrevious() {
-    setTadIndex((prev) => prev - 1);
+    if (tadIndex > 0) {
+      setTadIndex((prev) => prev - 1);
+    }
   }
   function toogleNext() {
-    setTadIndex((prev) => prev + 1);
+    if (tadIndex < tabData.length - 1) {
+      setTadIndex((prev) => prev + 1);
+    }
   }
 
   function toogleTab(numTab) {
